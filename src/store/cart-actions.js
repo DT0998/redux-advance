@@ -11,6 +11,12 @@ export const fetchCartData = () => {
         throw new Error("Could not fetch cart data!");
       }
       const data = await response.json();
+      if (data === null) {
+        return {
+          items: [],
+          totalQuantity: 0
+        };
+      }
       return data;
     };
 
@@ -52,7 +58,7 @@ export const sendCartData = (cart) => {
           method: "PUT",
           body: JSON.stringify({
             items: cart.items,
-            totalQuantity: cart.totalQuantity || 0,
+            totalQuantity: cart.totalQuantity,
           }),
         }
       );

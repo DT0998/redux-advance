@@ -17,7 +17,7 @@ const ProductItem = (props) => {
 
   return (
     <li className={classes.item}>
-      <Card>
+      <Card key={id}>
         <header>
           <h3>{title}</h3>
           <div className={classes.price}>${price.toFixed(2)}</div>
